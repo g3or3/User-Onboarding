@@ -48,14 +48,21 @@ export default function Users(props) {
 				border: "2px solid black",
 			}}
 		>
-			{users.map((user) => {
+			{users.map((user, idx) => {
 				return (
-					<>
+					<div key={idx}>
 						<Avatar className={classes.avatar}>
 							<AccountCircleIcon />
 						</Avatar>
-						<div>{user.firstName}</div>
-					</>
+						<div>
+							{user.firstName}
+							<br></br>
+							{user.lastName}
+							<br></br>
+							{user.email}
+							<br></br>
+						</div>
+					</div>
 				);
 			})}
 		</Container>
