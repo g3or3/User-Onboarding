@@ -4,19 +4,12 @@ import NewUserForm from "./NewUserForm";
 import axios from "axios";
 import schema from "./formSchema";
 import * as yup from "yup";
-
-const initialFormValues = {
-	firstName: "",
-	lastName: "",
-	email: "",
-	password: "",
-	termsAgreed: false,
-};
+import { initialFormValues, initialFormErrors } from "./initialValues";
 
 function App() {
 	const [users, setUsers] = useState([]);
 	const [formValues, setFormValues] = useState(initialFormValues);
-	const [formErrors, setFormErrors] = useState();
+	const [formErrors, setFormErrors] = useState(initialFormErrors);
 	const [disabled, setDisabled] = useState(true);
 
 	const postNewUser = (newUser) => {
@@ -26,6 +19,7 @@ function App() {
 				setUsers([res.data, ...users]);
 				setFormValues(initialFormValues);
 				setDisabled(true);
+				setFormErrors(initialFormErrors);
 			})
 			.catch((err) => console.log(err));
 	};
@@ -73,7 +67,7 @@ function App() {
 			container
 			justify="center"
 			alignItems="center"
-			style={{ minHeight: "100vh" }}
+			style={{ minHeight: "100vh", backgroundColor: "gainsboro" }}
 		>
 			<NewUserForm
 				values={formValues}

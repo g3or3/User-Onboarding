@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import LockIcon from "@material-ui/icons/LockOpenTwoTone";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import useStyles from "./useStyles";
@@ -15,6 +15,8 @@ export default function NewUserForm(props) {
 	const classes = useStyles();
 
 	const { values, submit, change, disabled, errors } = props;
+
+	const errorKeys = Object.keys(errors);
 
 	const onSubmit = (event) => {
 		event.preventDefault();
@@ -30,14 +32,12 @@ export default function NewUserForm(props) {
 	return (
 		<Container
 			maxWidth="xs"
-			style={{
-				border: "1px solid grey",
-			}}
+			style={{ backgroundColor: "white", borderRadius: "20px" }}
 		>
 			<CssBaseline />
 			<div className={classes.paper}>
 				<Avatar className={classes.avatar}>
-					<LockOutlinedIcon />
+					<LockIcon />
 				</Avatar>
 				<Typography component="h1" variant="h5">
 					Sign up
@@ -92,6 +92,11 @@ export default function NewUserForm(props) {
 								type="password"
 								onChange={onChange}
 							/>
+						</Grid>
+						<Grid className={classes.errors} item xs={10}>
+							{errorKeys.map((key, idx) => {
+								return <div key={idx}>{errors[key]}</div>;
+							})}
 						</Grid>
 						<Grid className={classes.tos} item xs={12}>
 							<FormControlLabel

@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
-		marginTop: theme.spacing(8),
+		margin: theme.spacing(3, 0, 2),
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
@@ -22,9 +22,9 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		justifyContent: "center",
 	},
-	users: {
-		marginTop: theme.spacing(8),
-		border: "2px solid black",
+	errors: {
+		margin: theme.spacing(3, 1, 1),
+		color: theme.palette.secondary.main,
 	},
 }));
 
