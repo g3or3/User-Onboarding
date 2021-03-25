@@ -1,7 +1,6 @@
 import Grid from "@material-ui/core/Grid";
 import { useEffect, useState } from "react";
 import NewUserForm from "./NewUserForm";
-import Users from "./Users";
 import axios from "axios";
 import schema from "./formSchema";
 import * as yup from "yup";
@@ -83,7 +82,6 @@ function App() {
 				disabled={disabled}
 				errors={formErrors}
 			/>
-			<Users users={users} />
 		</Grid>
 	);
 }
